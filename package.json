@@ -1,0 +1,22 @@
+{
+  "name": "reservamos-weather",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:imreyesjorge/reservamos-weather.git",
+  "author": "Jorge Reyes <40706868+imreyesjorge@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev"
+  },
+  "dependencies": {
+    "@next/font": "^13.1.6",
+    "next": "^13.1.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.0",
+    "@types/react": "^18.0.28",
+    "typescript": "^4.9.5"
+  }
+}
