@@ -1,5 +1,7 @@
+import { Input } from "../components/shared/atoms/Input";
+
 const Default = () => {
-  return <p>Open Sans installed ✅!</p>;
+  return <Input />;
 };
 
 export default Default;
