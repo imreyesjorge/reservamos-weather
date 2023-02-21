@@ -1,6 +1,12 @@
 import useSWR from "swr";
 import { fetcher } from "../utils/fetcher";
 
+/**
+ * Get the desired location’s weather data
+ * @param lat Lattitude of the desired location
+ * @param lon Longitude of the desired location
+ * @returns Location’s weather data
+ */
 export const useWeather = (lat: string, lon: string) => {
   const apiKey = process.env.NEXT_PUBLIC_OPEN_WEATHER_API_KEY;
 

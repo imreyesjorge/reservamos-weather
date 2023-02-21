@@ -1,8 +1,22 @@
 import { motion } from "framer-motion";
+import { DailyWeatherCardProps } from "./types";
 
-export const DailyWeatherCard = ({ dt, icon, temp, min, max }) => {
+export const DailyWeatherCard = ({
+  dt,
+  icon,
+  temp,
+  min,
+  max,
+}: DailyWeatherCardProps) => {
+  // `dt` is in seconds, so we need to get the miliseconds
+  // to get the date.
   const date = new Date(dt * 1000).toDateString();
 
+  /**
+   * Determine which color should the temperature icon be
+   * @param temp Given temperature in celsius
+   * @returns classNames for the min and max temperature icons
+   */
   const getTempColorWarning = (temp: number) => {
     const HOT_TEMP_TRESHOLD = 27;
     const COLD_TEMP_TRESHOLD = 18;
@@ -19,7 +33,7 @@ export const DailyWeatherCard = ({ dt, icon, temp, min, max }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="w-[500px] p-4 pr-8 bg-white border border-gray-200 rounded-lg flex items-center justify-between shadow-lg shadow-gray-300/75 hover:scale-[1.02] transition"
+      className="w-auto p-4 pr-8 bg-white border border-gray-200 rounded-lg flex items-center justify-between gap-9 shadow-lg shadow-gray-300/75 hover:scale-[1.02] transition"
     >
       <div className="flex items-center">
         <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} />
@@ -28,7 +42,7 @@ export const DailyWeatherCard = ({ dt, icon, temp, min, max }) => {
           <h3 className="text-3xl font-semibold">{temp}°C</h3>
         </div>
       </div>
-      <div className="text-slate-500 flex flex-col items-end gap-2">
+      <div className="text-slate-500 md:flex flex-col items-end gap-2 hidden">
         <p className="flex items-center gap-2">
           {max}°C
           <svg

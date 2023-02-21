@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { InputProps } from "./types";
 
-export const Input = ({ setValue, placeholder }: any) => {
-  const [inputValue, setInputValue] = useState("");
+export const Input = ({ setValue, placeholder }: InputProps) => {
+  const [inputValue, setInputValue] = useState<string>("");
 
   return (
     <input
