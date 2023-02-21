@@ -8,10 +8,11 @@ export const WeatherCard = ({ data }) => {
   );
 
   return (
-    <div style={{ border: "1px solid black" }}>
+    <div className="w-4/5 p-4 flex flex-col items-center gap-8">
       {weather &&
         weather.daily.map((day) => (
           <DailyWeatherCard
+            key={day.dt}
             dt={day.dt}
             temp={day.temp.day}
             min={day.temp.min}

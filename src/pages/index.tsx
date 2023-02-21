@@ -25,11 +25,12 @@ const Default = () => {
   return (
     <MainLayout>
       <Input
-        value={searchParam}
         setValue={setSearchParam}
-        placeholder="Ciudad de México"
+        placeholder="Search for a City, e.g.: Ciudad de México"
       />
-      <h1>{currentData && currentData.display}</h1>
+      <h1 className="text-3xl font-semibold">
+        {currentData && currentData.display}
+      </h1>
       {currentData && <WeatherCard data={currentData} />}
     </MainLayout>
   );
