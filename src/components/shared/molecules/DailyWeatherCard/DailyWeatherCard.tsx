@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export const DailyWeatherCard = ({ dt, icon, temp, min, max }) => {
   const date = new Date(dt * 1000).toDateString();
 
@@ -13,7 +15,12 @@ export const DailyWeatherCard = ({ dt, icon, temp, min, max }) => {
   };
 
   return (
-    <div className="w-[500px] p-4 pr-8 bg-white border border-gray-200 rounded-lg flex items-center justify-between shadow-lg shadow-gray-300/75 hover:scale-[1.02] transition">
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="w-[500px] p-4 pr-8 bg-white border border-gray-200 rounded-lg flex items-center justify-between shadow-lg shadow-gray-300/75 hover:scale-[1.02] transition"
+    >
       <div className="flex items-center">
         <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} />
         <div className="text-slate-900">
@@ -53,6 +60,6 @@ export const DailyWeatherCard = ({ dt, icon, temp, min, max }) => {
           </svg>
         </p>
       </div>
-    </div>
+    </motion.section>
   );
 };
