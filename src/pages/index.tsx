@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Input } from "../components/shared/atoms/Input";
+import { DailyWeatherCard } from "../components/shared/molecules/DailyWeatherCard";
+import { WeatherCard } from "../components/shared/organisms/WeatherCard";
 import { useSearch } from "../hooks/useSearch";
 import { useWeather } from "../hooks/useWeather";
 import MainLayout from "../layouts/MainLayout";
@@ -9,7 +11,6 @@ const Default = () => {
   const [currentData, setCurrentData] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const { cities, citiesErr, citiesLoading } = useSearch(searchParam);
-  const { weather, weatherErr, weatherLoading } = useWeather(null, null);
 
   useEffect(() => {
     if (!cities) return;
@@ -21,14 +22,15 @@ const Default = () => {
     setCurrentData(searchResults[0]);
   }, [searchResults]);
 
-  useEffect(() => {
-    console.log(weather);
-  }, [weather]);
-
   return (
     <MainLayout>
-      <Input value={searchParam} setValue={setSearchParam} />
-      {currentData && <h1>{currentData.city_name}</h1>}
+      <Input
+        value={searchParam}
+        setValue={setSearchParam}
+        placeholder="Ciudad de México"
+      />
+      <h1>{currentData && currentData.display}</h1>
+      {currentData && <WeatherCard data={currentData} />}
     </MainLayout>
   );
 };
